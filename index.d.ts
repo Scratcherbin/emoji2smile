@@ -1,6 +1,16 @@
-export function checkText(text: string): string;
-export function fromUnicodeToEmoji(text: string): string;
-export function checkTextWithAutoSuggestionsAndUnicode(text: string): string;
-export function checkTextWithAutoSuggestions(text: string): string;
-export const emojiMap: { [key: string]: string };
-export const mapStringToUnicode: { [key: string]: string };
+{
+  "name": "emoji2smile",
+  "version": "1.2.2",
+  "lockfileVersion": 3,
+  "requires": true,
+  "packages": {
+    "": {
+      "name": "emoji2smile",
+      "version": "1.2.2",
+      "license": "MIT",
+      "engines": {
+        "node": ">=18"
+      }
+    }
+  }
+}
