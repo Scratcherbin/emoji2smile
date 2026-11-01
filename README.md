@@ -21,12 +21,14 @@ Hello :)! That made me :'D. I love it <3
 
 ## Browser demo
 
-Open `demo/index.html` in a browser. It loads the library and UI controller from local files. The root `index.html` redirects to the demo.
+Open `demo/index.html` in a browser. It loads the converter and UI from local files. The repository-root `index.html` redirects to the demo.
 
-## Install locally
+## Install from GitHub
+
+The package is not published to npm yet. Install the repository directly:
 
 ```bash
-npm install ../emoji2smile
+npm install github:Scratcherbin/emoji2smile
 ```
 
 ## Usage
@@ -53,8 +55,8 @@ checkText('😀 😂 😭 👋');
 Select Japanese-style kaomoji:
 
 ```js
-checkText('😀 😂 😭 👋', { style: 'kaomoji' });
-// (^_^) (*^▽^*) (;_;) (^_^)/~~~
+checkText('😀', { style: 'kaomoji' });
+// (^_^)
 ```
 
 `style: 'eastern'` is also accepted as an alias for `kaomoji`.
@@ -80,11 +82,11 @@ console.log(checkText('That is hilarious 😂'));
 
 ## Wikipedia mapping notes
 
-The mappings were checked against the emoji-paired Western, Eastern, and other Eastern tables in [Wikipedia's List of emoticons](https://en.wikipedia.org/wiki/List_of_emoticons). The mappings are curated approximations, not literal translations. The 2channel section has no paired emoji column, and the Unicode section is a character chart, so those sections do not provide direct reverse mappings.
+The mappings were checked against the emoji-paired Western, Eastern, and other Eastern tables in [Wikipedia's List of emoticons](https://en.wikipedia.org/wiki/List_of_emoticons). They are curated approximations, not literal translations. The 2channel section has no paired emoji column, and the Unicode section is a character chart, so neither provides a direct reverse-mapping table.
 
 ## Relationship and attribution
 
-This repository is a reverse-direction fork/adaptation of [emish89/smile2emoji](https://github.com/emish89/smile2emoji). The original project converts text emoticons into emoji; this project converts emoji into text emoticons. The original MIT license and copyright attribution are retained in `LICENSE`. The reverse-conversion implementation, expanded mappings, tests, and browser demo are modifications made for this fork. This project is not affiliated with the original maintainer.
+This repository is a reverse-direction fork/adaptation of [emish89/smile2emoji](https://github.com/emish89/smile2emoji). The original project converts text emoticons into emoji; this project converts emoji into text emoticons. The original MIT license and copyright attribution are retained in `LICENSE`. The reverse-conversion implementation, mappings, tests, and browser demo are modifications for this fork. This project is not affiliated with the original maintainer.
 
 ## Tests
 
