@@ -19,6 +19,10 @@ Hello :)! That made me :'D. I love it <3
 - Custom mappings and conversion statistics.
 - Offline browser demo; no API, server, or external dependencies.
 
+## Live website
+
+Try Emoji2Smile in your browser: **https://scratcherbin.github.io/emoji2smile/**. GitHub Actions deploys the site from the `master` branch.
+
 ## Browser demo
 
 Open `demo/index.html` in a browser. It loads the converter and UI from local files. The repository-root `index.html` redirects to the demo.
