@@ -21,7 +21,7 @@ Hello :)! That made me :'D. I love it <3
 
 ## Browser demo
 
-Open `demo/index.html` in a browser. It loads the library and UI controller from local files. The root `index.html` and `standalone.html` are self-contained offline versions.
+Open `demo/index.html` in a browser. It loads the library and UI controller from local files. The root `index.html` redirects to the demo.
 
 ## Install locally
 
