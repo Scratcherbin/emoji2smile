@@ -1,0 +1,14 @@
+import api from './src/index.js';
+export const checkText = api.checkText;
+export const checkTextWithAutoSuggestions = api.checkTextWithAutoSuggestions;
+export const checkTextWithAutoSuggestionsAndUnicode = api.checkTextWithAutoSuggestionsAndUnicode;
+export const fromUnicodeToEmoticon = api.fromUnicodeToEmoticon;
+export const convertEmojiToEmoticons = api.convertEmojiToEmoticons;
+export const getEmoticon = api.getEmoticon;
+export const getConversionStats = api.getConversionStats;
+export const getSupportedEmoji = api.getSupportedEmoji;
+export const emojiMap = api.emojiMap;
+export const kaomojiMap = api.kaomojiMap;
+export const mapUnicodeToEmoticon = api.mapUnicodeToEmoticon;
+export const mapUnicodeToEmoticonKaomoji = api.mapUnicodeToEmoticonKaomoji;
+export default api;
