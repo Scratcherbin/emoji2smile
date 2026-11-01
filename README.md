@@ -1,125 +1,97 @@
+# Emoji2Smile
 
-# Smile2Emoji NPM Module
+Version 1.2.2
 
-[![npm version](https://badge.fury.io/js/smile2emoji.svg)](https://badge.fury.io/js/smile2emoji)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Femish89%2Fsmile2emoji.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Femish89%2Fsmile2emoji?ref=badge_shield)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Maintainability](https://api.codeclimate.com/v1/badges/8bdab2e8ea80f30811bd/maintainability)](https://codeclimate.com/github/emish89/smile2emoji/maintainability)
+A dependency-free JavaScript library and offline browser demo that converts emoji characters into text emoticons. It works in the opposite direction to the original [smile2emoji](https://github.com/emish89/smile2emoji) project.
 
-![smile2emoji](https://socialify.git.ci/emish89/smile2emoji/image?font=Raleway&forks=1&language=1&owner=1&stargazers=1&theme=Dark)
-
-**Convert all the smiley to fantastic emoticons!** ✨
-
-With this simple and little module you can convert the smiles in your text to emoji.
-:) or :D or <3 will become emoticons!
-Ideal for input, chats and so on, where you don't want an emoji picker but a simpler solution.
-
-Very quick test usage:
-https://codepen.io/emish89/pen/YzGrvVK
-
-Happy usage =)
-
-# Installation
-
-```shell
-npm i smile2emoji
+```text
+Hello 😊! That made me 😂. I love it ❤️
+       ↓
+Hello :)! That made me :'D. I love it <3
 ```
 
-# Usage
+## Features
 
-Objects exported by the package:
+- Western keyboard emoticons and Japanese-style kaomoji.
+- 254 mapped emoji/symbol forms plus supported skin-tone variants.
+- Searchable “Try an example” picker with 364 selectable examples.
+- Unicode code-point conversion.
+- Custom mappings and conversion statistics.
+- Offline browser demo; no API, server, or external dependencies.
 
+## Browser demo
 
+Open `demo/index.html` in a browser. It loads the library and UI controller from local files. The root `index.html` and `standalone.html` are self-contained offline versions.
 
-## FUNCTIONS EXPORTED
+## Install locally
 
-**checkText(text: string): string**
-Function to check if in the string parameter there is some emoji and in case convert it. 
-Example:
+```bash
+npm install ../emoji2smile
+```
+
+## Usage
+
+### ES modules
+
 ```js
-import { checkText } from 'smile2emoji'
+import { checkText, fromUnicodeToEmoticon } from 'emoji2smile';
 
-...
-
-const text = checkText(':)');
-console.log(text) //prints '😊'
-
-//OR
-
-const text = checkText('i like bananas :)');
-console.log(text) //prints 'i like bananas 😊'
-
+console.log(checkText('Good morning 😊')); // Good morning :)
+console.log(checkText('I love it ❤️'));    // I love it <3
+console.log(fromUnicodeToEmoticon('1F602')); // :'D
 ```
 
-**checkTextWithAutoSuggestions(text: string): string**
-Same as before but with autosuggestion, so if there is only one emoji key in the map starting with the string, it use it.
+### Choose a style
+
+Western ASCII-style output is the default:
+
 ```js
-import { checkTextWithAutoSuggestions } from 'smile2emoji'
-
-...
-
-const text = checkTextWithAutoSuggestions(':tenn');
-console.log(text) //prints '🎾'
-
-//OR
-
-const text = checkTextWithAutoSuggestions('i like bananas :tenn');
-console.log(text) //prints 'i like bananas 🎾'
-
+checkText('😀 😂 😭 👋');
+// :D :'D :'( o/
 ```
 
-**checkTextWithAutoSuggestionsAndUnicode(text: string): string**
-Same function but it use the map with unicode char instead of emoji,  same results:
+Select Japanese-style kaomoji:
+
 ```js
-import { checkTextWithAutoSuggestionsAndUnicode } from 'smile2emoji'
-
-...
-
-const text = checkTextWithAutoSuggestionsAndUnicode(':tenn');
-console.log(text) //prints '🎾'
-
-//OR
-
-const text = checkTextWithAutoSuggestionsAndUnicode('i like bananas :tenn');
-console.log(text) //prints 'i like bananas 🎾'
-
+checkText('😀 😂 😭 👋', { style: 'kaomoji' });
+// (^_^) (*^▽^*) (;_;) (^_^)/~~~
 ```
 
-**fromUnicodeToEmoji(text: string): string**
-Used by the function above, it convert an unicode string to emoji. 
-Example usage:
+`style: 'eastern'` is also accepted as an alias for `kaomoji`.
+
+### CommonJS
+
 ```js
-import { fromUnicodeToEmoji } from 'smile2emoji'
-
-const text = fromUnicodeToEmoji('2615');
-console.log(text) //prints '☕'
-
+const { checkText } = require('emoji2smile');
+console.log(checkText('That is hilarious 😂'));
 ```
 
+## API
 
+- `checkText(text, options?)`
+- `convertEmojiToEmoticons(text, options?)`
+- `checkTextWithAutoSuggestions(text, options?)`
+- `checkTextWithAutoSuggestionsAndUnicode(text, options?)`
+- `fromUnicodeToEmoticon(value, options?)`
+- `getEmoticon(emoji, style?)`
+- `getConversionStats(text, options?)`
+- `getSupportedEmoji(style?)`
+- `emojiMap`, `kaomojiMap`, `mapUnicodeToEmoticon`, `mapUnicodeToEmoticonKaomoji`
 
+## Wikipedia mapping notes
 
-## **MAPS EXPORTED**:
+The mappings were checked against the emoji-paired Western, Eastern, and other Eastern tables in [Wikipedia's List of emoticons](https://en.wikipedia.org/wiki/List_of_emoticons). The mappings are curated approximations, not literal translations. The 2channel section has no paired emoji column, and the Unicode section is a character chart, so those sections do not provide direct reverse mappings.
 
-**emojiMap: { [key: string]: string }**
-In this map is exported a pair of key-value  string -emoji , like ':)' -> 😊
+## Relationship and attribution
 
-**mapStringToUnicode: { [key: string]: string }**
-In this map is exported a pair of key-value  string -unicode of the emoji , like ': coffee:' -> '2615'
+This repository is a reverse-direction fork/adaptation of [emish89/smile2emoji](https://github.com/emish89/smile2emoji). The original project converts text emoticons into emoji; this project converts emoji into text emoticons. The original MIT license and copyright attribution are retained in `LICENSE`. The reverse-conversion implementation, expanded mappings, tests, and browser demo are modifications made for this fork. This project is not affiliated with the original maintainer.
 
-Example usage: 
-```js
-import { emojiMap } from 'smile2emoji'
+## Tests
 
-...
-
-const text = ':)';
-const emoji = emojiMap[text];
-console.log(emoji) //prints '😊'
-
+```bash
+npm test
 ```
-# License
 
-MIT © Federico Ballarini
+## License
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Femish89%2Fsmile2emoji.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Femish89%2Fsmile2emoji?ref=badge_large)
+MIT. See [LICENSE](LICENSE).
